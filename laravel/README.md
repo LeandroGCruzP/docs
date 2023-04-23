@@ -25,6 +25,11 @@ php -–version
 php artisan serve
 ```
 
+#### Vendo lista de rotas
+```cmd
+php artisan route:list
+```
+
 ### Navegando pelo projeto
 |             | Rota de pastas |
 | ----------- | -------------- |
@@ -59,6 +64,14 @@ php artisan make:model <Name>
 
 ## NOVA
 - [Instalando NOVA](https://nova.laravel.com/docs/3.0/installation.html#installing-nova)
+
+> Se a versao da problema do php se deve incluir a tua versao com o simbolo |
+```cmd
+"require": {
+    "php": "^7.3|^8.1",
+    // ...
+},
+```
 
 ### Criando resources, lenses, actions, metrics, cards, tools, resource tools e dashboard
 
