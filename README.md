@@ -8,6 +8,7 @@
 - [Export all components as const](./exportComponents/README.md)
 - [Path mapping](./pathMapping/README.md)
 - [Persistent Layout](./persistentLayout/README.md)
+- [Laravel with NOVA](./laravel/README.md)
 </details>
 
 Here we find resource documentation that we can use for many javascript projects or programming tool resources
