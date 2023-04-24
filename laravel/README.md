@@ -73,6 +73,14 @@ php artisan make:model <Name>
 },
 ```
 
+### Criando novo usuario para fazer [Login](http://127.0.0.1:8000/nova/login)
+```cmd
+php artisan nova:user
+Name: leandro
+Email address: leh@hotmail.com
+Password: asdASD123*
+```
+
 ### Criando resources, lenses, actions, metrics, cards, tools, resource tools e dashboard
 
 #### Criando resource
