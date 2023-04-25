@@ -43,19 +43,15 @@ php -–version
 ### **Adicionando NOVA ao projeto**
 - [Instalando NOVA](https://nova.laravel.com/docs/3.0/installation.html#installing-nova)
 
-Se a versão do php dar problema se deve incluir a tua versão com o simbolo |
-```json
-// composer.json
-
+Se a versão do php dar problema se deve incluir a tua versão com o simbolo | ```composer.json```
+```
 "require": {
     "php": "^7.3|^8.1",
 },
 ```
 
-Adicionar a pasta /nova dentro do .gitignore da raiz do projeto
-```json
-// .gitignore
-
+Adicionar a pasta /nova dentro do .gitignore da raiz do projeto ```.gitignore```
+```
 nova
 ```
 
@@ -66,10 +62,8 @@ nova
 2. Pressionar "Database" e fazer duplo click em "Laragon.MySQL"
 3. Novamento em Laragon.MySQL clicar com o botão direito e ir até a opção "Criar Novo" > "Banco de Dados"
 4. Preencher o campo "Nome" e clicar em "Ok"
-5. Copiar o nome prenchido anteriormente e colar no arquivo .env da raiz do projeto
-    ```json
-    // .env
-
+5. Copiar o nome prenchido anteriormente e colar no arquivo ```.env``` da raiz do projeto
+    ```
     DB_DATABASE=<name_db>
     ```
 6. Depois de configurar o .env roda a migration de usuário que já vem criado
