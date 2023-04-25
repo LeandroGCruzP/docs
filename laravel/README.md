@@ -1,130 +1,128 @@
-# Criando projeto Laravel com NOVA
+# Criando projeto Laravel com Laravel NOVA
 
-## Criando projeto Laravel
-```cmd
+<details open>
+<summary><b>Tabela de conteúdos</b></summary>
+
+- [Requisitos de instalação](#requisitos-de-instalação)
+- [Criando projeto Laravel](#criando-projeto-laravel)
+- [Adicionando NOVA ao projeto](#adicionando-NOVA-ao-projeto)
+- [Fazer rodar o projeto em NOVA](#fazer-rodar-o-projeto-em-NOVA)
+- [Criando novo usuario para fazer Login](#criando-novo-usuario-para-fazer-Login)
+- [Criando novo resource da app](#criando-novo-resource-da-app)
+- [Criando um novo filter para as tabelas](#criando-um-novo-filter-para-as-tabelas)
+- [Navegando pelo projeto](#navegando-pelo-projeto)
+</details>
+
+### **Requisitos de instalação**
+- [Composer](https://getcomposer.org/download/)
+- [Laragon](https://laragon.org/download/)
+
+------------------------------
+
+### **Criando projeto Laravel**
+Criando com a versão lastest
+```shell
 composer create-project laravel/laravel <name_project>
 ```
 
 Com uma versão de Laravel especifica
-```cmd
-composer create-project laravel/laravel:^8.1 crud-nova --ignore-platform-reqs
+```shell
+composer create-project laravel/laravel:^8.1 <name_project> --ignore-platform-reqs
 ```
 
-#### Ver versão do Laravel
-```cmd
+Ver versão do Laravel
+```shell
 php artisan -–version
 ```
 
-#### Ver versão do Php
-```cmd
+Ver versão do Php
+```shell
 php -–version
 ```
 
-#### Rodando projeto
-```cmd
-php artisan serve
-```
-
-#### Vendo lista de rotas
-```cmd
-php artisan route:list
-```
-
-### Navegando pelo projeto
-|             | Rota de pastas |
-| ----------- | -------------- |
-| Routes      | routes > web.php |
-| Controllers | app > Http > Controllers |
-| Views       | resources > view |
-| Models      | app > Models |
-
-### Controlador, migrações, modelos
-#### Criando controller
-> Exemplo: GameController
-```cmd
-php artisan make:controller <Name>Controller
-```
-
-#### Criando migrações
-> Exemplo: create_game_table
-```cmd
-php artisan make:migration <method_name_table>
-```
-
-Rodar as migrations
-```cmd
-php artisan migrate
-```
-
-#### Criando modelos
-> O nome é sempre em singular
-```cmd
-php artisan make:model <Name>
-```
-
-## NOVA
+### **Adicionando NOVA ao projeto**
 - [Instalando NOVA](https://nova.laravel.com/docs/3.0/installation.html#installing-nova)
 
-> Se a versao da problema do php se deve incluir a tua versao com o simbolo |
-```cmd
+Se a versão do php dar problema se deve incluir a tua versão com o simbolo |
+```json
+// composer.json
+
 "require": {
     "php": "^7.3|^8.1",
-    // ...
 },
 ```
 
-### Criando novo usuario para fazer [Login](http://127.0.0.1:8000/nova/login)
-```cmd
+Adicionar a pasta /nova dentro do .gitignore da raiz do projeto
+```json
+// .gitignore
+
+nova
+```
+
+------------------------------
+
+### **Fazer rodar o projeto em NOVA**
+1. Ligar o laragon e pressionar "Start All"
+2. Pressionar "Database" e fazer duplo click em "Laragon.MySQL"
+3. Novamento em Laragon.MySQL clicar com o botão direito e ir até a opção "Criar Novo" > "Banco de Dados"
+4. Preencher o campo "Nome" e clicar em "Ok"
+5. Copiar o nome prenchido anteriormente e colar no arquivo .env da raiz do projeto
+    ```json
+    // .env
+
+    DB_DATABASE=<name_db>
+    ```
+6. Depois de configurar o .env roda a migration de usuário que já vem criado
+    ```shell
+    php artisan migrate
+    ```
+7. Para testar se está tudo certo se pode revisar todas as rotas da aplicação
+    ```shell
+    php artisan route:list
+    ```
+8. Logo ir até a tela de [login](http://127.0.0.1:8000/nova/login) do Laravel NOVA
+
+------------------------------
+
+### **Criando novo usuario para fazer Login**
+```shell
 php artisan nova:user
-Name: leandro
-Email address: leh@hotmail.com
-Password: asdASD123*
+
+Name: <your_name>
+Email Address: <your_email>
+Password: <your_password>
 ```
 
-### Criando resources, lenses, actions, metrics, cards, tools, resource tools e dashboard
+------------------------------
 
-#### Criando resource
-```cmd
-php artisan nova:resource <name> --model="Model"
+### **Criando novo resource da app**
+Criando novo resource
+```shell
+php artisan nova:resource <Name>
 ```
+```php artisan nova:resource Car```
 
-#### Criando lenses
-```cmd
-php artisan nova:lense <name>
+Para criar a migration somente se necesita rodar o comando
+```shell
+php artisan migrate
 ```
+Si se realizan nomas modificações na migration se deve rodar o comando novamente
 
-#### Criando actions
-```cmd
-php artisan nova:action <name>
+------------------------------
+
+### **Criando um novo filter para as tabelas**
+Criando novo filter
+```shell
+php artisan nova:filter <NameFilter>
 ```
+```php artisan nova:filter CarBrand```
 
-#### Criando metrics
-> Se usa juntamente com o componente Card
-```cmd
-php artisan nova:value <name>
-php artisan nova:trend <name>
-php artisan nova:partition <name>
-```
+------------------------------
 
-#### Criando cards
-> Contem qualquer conteúdo, inclusive um componente metric
-```cmd
-php artisan nova:card <name>
-```
-
-#### Criando tools
-```cmd
-php artisan nova:tool <name>
-```
-
-#### Criando resource tools
-```cmd
-php artisan nova:resource-tool <name>
-```
-
-#### Criando dashboard
-> Criar outro dashboard 
-```cmd
-php artisan nova:dashboard <name>
-```
-
+### **Navegando pelo projeto**
+|            | Rota de pastas |
+| ---------- | -------------- |
+| Resources  | app > Nova |
+| Migrations | database > migrations |
+| Models     | app > Models |
+| Filters    | app > Nova > Filters |
