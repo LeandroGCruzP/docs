@@ -1,5 +1,7 @@
 # Filters
 
+
+## Filter per page
 ```tsx
 interface UserProps {
   id: number;
@@ -91,4 +93,20 @@ const usersFiltered = React.useMemo(() => {
       user.email.toLowerCase().includes(lowerSearch)
   );
 }, [search, users]);
+```
+
+## Global filter
+```tsx
+function filterBySearchCriteria<T> (searchValue: string, data: T[], searchOptions: (keyof T)[]): T[] {
+  const searchValueLowerCase = searchValue?.toLowerCase()
+
+  const filteredData = data?.filter(item =>
+    searchOptions.some(key => (key in item) && item[key].toString().toLowerCase().indexOf(searchValueLowerCase) !== -1)
+  )
+
+  return filteredData
+}
+
+// how to use
+const data = filterBySearchCriteria(searchValue, dataAPI, ['value'])
 ```
