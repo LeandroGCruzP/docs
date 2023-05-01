@@ -12,6 +12,9 @@
 Abre este arquivo buscando por "Open Keyboard Shortcuts (JSON)"
 - ```n``` - Cria um novo arquivo ao estar no navegador de arquivos
 - ```ctrl + shift + g``` - Abre o Git Graph
+- Retirando bind de abrir Github Copilot com ```ctrl + enter```
+- ```ctrl + shift + .``` - Abre Github Copilot
+
 ```json
 [
     {
@@ -22,14 +25,19 @@ Abre este arquivo buscando por "Open Keyboard Shortcuts (JSON)"
     {
         "key": "ctrl+shift+g",
         "command": "git-graph.view"
-    }
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-github.copilot.generate",
+        "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused"
+    },
+    {
+        "key": "ctrl+shift+oem_period",
+        "command": "github.copilot.generate",
+        "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused"
+    },
 ]
 ```
-{
-  "key": "n",
-  "command": "explorer.newFile",
-  "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
-}
 
 ## Extensões
 - [WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) - Suporte para o WSL
@@ -52,169 +60,52 @@ Abre este arquivo buscando por "Open Keyboard Shortcuts (JSON)"
 - [Prisma](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma) - Suporte para o Prisma
 - [Prisma Insider](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma-insider) - Versão beta do Prisma
 - [PHP Intelephense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client) - Suporte para PHP
+- [FiraCode font - Professional Font for Developers](https://marketplace.visualstudio.com/items?itemName=SeyyedKhandon.firacode) - Font ligatures
 
 ## Arquivo de configurações
 ```json
 {
-  // VS Code
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.editor.labelFormat": "short",
-  "workbench.iconTheme": "material-icon-theme",
-  "editor.rulers": [100],
-  "editor.fontSize": 18,
-  "editor.lineHeight": 26,
-  "editor.fontFamily": "Fira Code",
-  "editor.fontWeight": 500,
-  "editor.fontLigatures": true,
-  "editor.wordWrap": "off",
-  "editor.semanticHighlighting.enabled": false,
-  "editor.formatOnSave": false,
-  "editor.renderLineHighlight": "gutter",
-  "editor.parameterHints.enabled": false,
-
-  // Auto fix on save
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    // "source.fixAll": true,
-    "source.organizeImports": false
-  },
-
-  // Terminal
-  "terminal.integrated.fontSize": 16,
-  "terminal.integrated.fontWeight": "500",
-  "terminal.integrated.fontFamily": "Fira Code",
-  "terminal.integrated.showExitAlert": false,
-
-  "explorer.compactFolders": false,
-  "extensions.ignoreRecommendations": true,
-  "breadcrumbs.enabled": true,
-  "explorer.confirmDragAndDrop": true,
-  "explorer.confirmDelete": true,
-  "files.exclude": {
-    "**/.git": true,
-    "**/.husky": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.CVS": true,
-    "**/.DS_Store": true,
-    "**/.next": true,
-    "**/node_modules": true
-  },
-  "files.associations": {
-    ".sequilizerc": "javascript",
-    ".stylelintrc": "json",
-    ".prettierrc": "json",
-    ".tsx": "typescriptreact",
-    ".env.*": "dotenv",
-    "*.css": "css",
-    "css": "css"
-  },
-  "emmet.syntaxProfiles": {
-    "javascript": "jsx"
-  },
-  "emmet.includeLanguages": {
-    "javascript": "javascriptreact"
-  },
-  "git.enableSmartCommit": true,
-  "typescript.tsserver.log": "off",
-  "javascript.suggest.autoImports": true,
-  "typescript.suggest.autoImports": true,
-  "material-icon-theme.activeIconPack": "nest",
-  "screencastMode.onlyKeyboardShortcuts": true,
-  "material-icon-theme.folders.associations": {
-    "infra": "app",
-    "entities": "class",
-    "domain": "class",
-    "schemas": "class",
-    "typeorm": "database",
-    "repositories": "mappings",
-    "http": "container",
-    "migrations": "tools",
-    "modules": "components",
-    "implementations": "core",
-    "dtos": "typescript",
-    "fakes": "mock",
-    "websockets": "pipe",
-    "protos": "pipe",
-    "grpc": "pipe",
-    "providers": "include",
-    "subscribers": "messages",
-    "useCases": "controller",
-    "kafka": "scripts",
-    "mappers": "meta",
-    "_shared": "shared",
-    "eslint-config": "tools",
-    "kube": "kubernetes"
-  },
-  "material-icon-theme.files.associations": {
-    "ormconfig.json": "database",
-    "tsconfig.json": "tune",
-    "*.proto": "3d",
-    "*.webpack.js": "webpack"
-  },
-  "material-icon-theme.languages.associations": {
-    "dotenv": "tune"
-  },
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "editor.suggestSelection": "recentlyUsed",
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "bracketPairColorizer.depreciation-notice": false,
-  "cSpell.language": "pt_BR, pt, en",
-  "cSpell.userWords": ["Chakra", "chakra"],
-  "[prisma]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "Prisma.prisma"
-  },
-  "editor.inlineSuggest.enabled": true,
-  "diffEditor.codeLens": true,
-  "editor.suggest.localityBonus": true,
-  "editor.suggest.preview": true,
-  "editor.suggest.shareSuggestSelections": true,
-  "editor.suggest.showStatusBar": true,
-  "files.autoGuessEncoding": true,
-  "files.insertFinalNewline": true,
-  "files.simpleDialog.enable": true,
-  "editor.minimap.enabled": false,
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "workbench.colorTheme": "Sorcerer",
-  "liveServer.settings.donotShowInfoMsg": true,
-  "workbench.sideBar.location": "right",
-  "workbench.editor.showTabs": false,
-  "workbench.colorCustomizations": {
-    "editor.lineHighlightBackground": "#000", // Line highlight - bg
-    "editorLineNumber.activeForeground": "#FFF", // Line highlight - color
-    "editor.lineHighlightBorder": "#ff006a", // Line highlight - border
-    "focusBorder": "#ff006a", // Sidebar - border focus selected
-    "editorCursor.foreground": "#FFF" // Cursor
-  },
-  "glassit.alpha": 200,
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
-  "tabnine.experimentalAutoImports": true,
-  "workbench.editor.untitled.hint": "hidden",
-  "totalTypeScript.hideAllTips": false,
-  "totalTypeScript.hideBasicTips": true,
-  "totalTypeScript.hiddenTips": [
-    "passing-generics-to-types",
-    "omit-utility-type",
-    "pick-utility-type"
-  ],
-  "terminal.integrated.env.linux": {},
-  "github.copilot.enable": {
-    "*": true,
-    "yaml": false,
-    "plaintext": false,
-    "markdown": true
-  },
-  "window.menuBarVisibility": "compact"
+    "editor.fontSize": 16, // Font size
+    "editor.lineHeight": 24, // Line height
+    "editor.fontWeight": 500, // Font weight
+    "editor.fontFamily": "Fira Code", // Font family
+    "editor.fontLigatures": true, // Font ligatures
+    "editor.inlineSuggest.enabled": true, // Show logs and error inline
+    "terminal.integrated.env.windows": {},
+    "workbench.colorTheme": "Sorcerer", // Theme editor
+    "workbench.iconTheme": "material-icon-theme", // Theme icons
+    "glassit.alpha": 240, // Opacity window
+    "editor.formatOnSave": true, // Format code on save
+    "editor.codeActionsOnSave": { // Fix code on save
+        "source.fixAll.eslint": true,
+        "source.organizeImports": true
+    },
+    "terminal.integrated.fontSize": 16, // Font size terminal
+    "terminal.integrated.fontWeight": "500", // Font weight terminal
+    "terminal.integrated.fontFamily": "Fira Code", // Font family terminal
+    "files.exclude": { // Hide files and folders
+        "**/.git": true,
+        "**/.next": true,
+        "**/node_modules": true,
+    },
+    "editor.minimap.enabled": false, // Minimap visibility
+    "window.menuBarVisibility": "hidden", // Menu bar visibility
+    "workbench.layoutControl.enabled": false, // Layout control visibility 
+    "workbench.activityBar.visible": false, // Sidebar visibility 
+    "workbench.sideBar.location": "right", // Sidebar position
+    "workbench.statusBar.visible": false, // Status bar visibility
+    "workbench.editor.showTabs": false, // Tabs visibility
+    "editor.scrollbar.vertical": "hidden", // Vertical scrollbar visibility
+    "editor.overviewRulerBorder": false, // Vertical scrollbar border visibility
+    "editor.hideCursorInOverviewRuler": true, // Breadcrumbs visibility
+    // "breadcrumbs.enabled": false, // Breadcrumbs visibility
+    "editor.glyphMargin": false, // Glyph margin visibility
+    "workbench.colorCustomizations": {
+        "editor.lineHighlightBorder": "#ff000000", // Line document highlight border color
+        "focusBorder": "#ff006a", // Sidebar border focus selected color
+        "editorLineNumber.activeForeground": "#FFF", // Line number color
+        "editorCursor.foreground": "#FFF", // Cursor color
+    },
+    "terminal.integrated.env.linux": {}, // Environment variables
 }
 ```
