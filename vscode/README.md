@@ -75,10 +75,8 @@ Abre este arquivo buscando por "Open Keyboard Shortcuts (JSON)"
     "workbench.colorTheme": "Sorcerer", // Theme editor
     "workbench.iconTheme": "material-icon-theme", // Theme icons
     "glassit.alpha": 240, // Opacity window
-    "editor.formatOnSave": true, // Format code on save
     "editor.codeActionsOnSave": { // Fix code on save
-        "source.fixAll.eslint": true,
-        "source.organizeImports": true
+        "source.fixAll.eslint": true
     },
     "terminal.integrated.fontSize": 16, // Font size terminal
     "terminal.integrated.fontWeight": "500", // Font weight terminal
