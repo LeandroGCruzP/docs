@@ -32,7 +32,7 @@ Abre este arquivo buscando por "Open Keyboard Shortcuts (JSON)"
         "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused"
     },
     {
-        "key": "ctrl+shift+oem_period",
+        "key": "ctrl+shift+c",
         "command": "github.copilot.generate",
         "when": "editorTextFocus && github.copilot.activated && !inInteractiveInput && !interactiveEditorFocused"
     },
